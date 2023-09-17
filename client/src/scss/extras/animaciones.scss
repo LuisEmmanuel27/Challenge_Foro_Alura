@@ -1,0 +1,20 @@
+@keyframes cambioFondo {
+    0% {
+        background-color: #eceef4; /* Color blanco */
+    }
+    20% {
+        background-color: #d2dce6; /* Color gris */
+    }
+    40% {
+        background-color: #7b9cb4; /* Color gris azulado */
+    }
+    60% {
+        background-color: #5b8ca8; /* Color azul */
+    }
+    80% {
+        background-color: #24425a; /* Color azul oscuro */
+    }
+    100% {
+        background-color: #eceef4; /* Volver al color blanco */
+    }
+}

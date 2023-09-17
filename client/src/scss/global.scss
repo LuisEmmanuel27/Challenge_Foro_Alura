@@ -1,0 +1,105 @@
+@use "./extras/mixinsfunc";
+@import "./extras/variables";
+@import "./extras/animaciones.scss";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    min-height: 100vh;
+}
+
+.btn_principal {
+    padding: 12px 15px;
+    text-transform: uppercase;
+    border: solid 1px transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: $DARK_BLUE;
+    color: $WHITE;
+    font-size: 1.2rem;
+    transition: all 0.2s linear;
+
+    &:hover {
+        border: solid 1px $DARK_BLUE;
+        background-color: $GRAY;
+        color: $DARK_BLUE;
+    }
+}
+
+.Pagina__Inicio {
+    @include mixinsfunc.flexBox(center, 0);
+
+    .lado__izquierdo {
+        flex: 1;
+        text-align: center;
+        padding: 1rem;
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            color: $DARK_BLUE;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            margin: 1rem auto;
+            font-size: 1.5rem;
+            color: $BLUE;
+        }
+
+        .caja_btn_nav {
+            margin-top: 1.5rem;
+            @include mixinsfunc.flexBox(center, 1.5rem);
+            height: 100px;
+
+            a {
+                overflow: visible;
+            }
+
+            .btn_principal {
+                &:hover {
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
+
+    .lado__derecho {
+        flex: 1;
+        min-height: 100vh;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: auto auto;
+        row-gap: 0;
+        column-gap: 0;
+
+        @for $i from 1 through 4 {
+            .pic_#{$i} {
+                overflow: hidden;
+                animation: cambioFondo 10s linear infinite;
+
+                &:hover img {
+                    opacity: 0.8;
+                    transform: scale(1.1);
+                }
+
+                img {
+                    @include mixinsfunc.img();
+                    transition: all 0.3s linear;
+                }
+
+                @if $i % 2 == 0 {
+                    animation-direction: reverse;
+                }
+            }
+        }
+    }
+}
