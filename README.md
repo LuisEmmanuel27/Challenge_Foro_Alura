@@ -40,3 +40,5 @@ Al final del desarrollo de esta API debebe tener las siguientes funcionalidades:
   - Axios
   - React Router Dom
   - Git/GitHub
+
+Creditos de la imagen: <a href="https://www.flaticon.es/stickers-gratis/mensaje" title="mensaje stickers">Mensaje stickers creadas por Stickers - Flaticon</a>
