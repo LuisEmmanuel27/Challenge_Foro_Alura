@@ -31,6 +31,7 @@ Al final del desarrollo de esta API debebe tener las siguientes funcionalidades:
   - Java
   - JPA
   - Spring Boot
+  - JWT
   - SQL
   - MySQL
   - Flyway
