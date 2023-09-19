@@ -34,6 +34,57 @@ body {
     }
 }
 
+.titular {
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 1.5rem auto;
+    color: $DARK_BLUE;
+}
+
+.contenedor__form {
+    @include mixinsfunc.flexBox(center, 2rem);
+    background-color: $GRAY;
+    border: solid 1px $DARK_BLUE;
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    flex-direction: column;
+
+    .formulario {
+        width: 80%;
+        @include mixinsfunc.flexBox(center, 1.5rem);
+        flex-direction: column;
+
+        .input__caja {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+
+            label {
+                color: $DARK_BLUE;
+                font-size: 1.3rem;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                outline: none;
+                background: transparent;
+                border-bottom: solid 3px $DARK_BLUE;
+                color: $DARK_BLUE;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .mensaje {
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
 .Pagina__Inicio {
     @include mixinsfunc.flexBox(center, 0);
 
@@ -100,6 +151,28 @@ body {
                     animation-direction: reverse;
                 }
             }
+        }
+    }
+}
+
+.Login,
+.SignUp {
+    position: relative;
+    min-height: 100vh;
+    @include mixinsfunc.flexBox(center, 0);
+
+    img {
+        position: absolute;
+        width: 400px;
+
+        &:nth-child(1) {
+            left: 5px;
+            animation: apareciendoIzq 1s ease-in-out;
+        }
+
+        &:nth-child(2) {
+            right: 5px;
+            animation: apareciendoDer 1s ease-in-out;
         }
     }
 }

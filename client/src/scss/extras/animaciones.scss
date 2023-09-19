@@ -18,3 +18,23 @@
         background-color: #eceef4; /* Volver al color blanco */
     }
 }
+
+@keyframes apareciendoIzq {
+    0% {
+        transform: translateX(-500px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes apareciendoDer {
+    0% {
+        transform: translateX(500px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
