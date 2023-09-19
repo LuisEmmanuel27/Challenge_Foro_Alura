@@ -1,6 +1,10 @@
+import Header from "../components/foro/Header"
+
 const Foro = () => {
     return (
-        <div>Foro</div>
+        <div className="foro__main">
+            <Header />
+        </div>
     )
 }
 
