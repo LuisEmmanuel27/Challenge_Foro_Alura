@@ -268,4 +268,87 @@ body {
             }
         }
     }
+
+    .contenedor__foro {
+        min-height: 78vh;
+        @include mixinsfunc.flexBox(center, 0);
+
+        .lado__izquierdo {
+            flex: 2;
+            height: 76vh;
+            padding: 1rem;
+            overflow-y: hidden;
+
+            .contenedor__orden__busqueda {
+                margin-bottom: 1rem;
+                min-height: 20%;
+                border-radius: 10px;
+                @include mixinsfunc.flexBox(space-around, 1rem);
+                background-color: $GRAY;
+                padding: 10px 20px;
+
+                form,
+                .contenedor__select {
+                    @include mixinsfunc.flexBox(center, 10px);
+                    flex-direction: column;
+                    width: 80%;
+
+                    .select_caja {
+                        @include mixinsfunc.flexBox(space-between, 10px);
+                        width: 100%;
+
+                        select {
+                            font-size: 15px;
+                            padding: 3px;
+                            border: solid 1px $DARK_BLUE;
+                            color: $DARK_BLUE;
+                            border-radius: 5px;
+                        }
+
+                        label {
+                            font-size: 15px;
+                            color: $DARK_BLUE;
+                        }
+                    }
+                }
+
+                .btn_principal {
+                    font-size: 13px;
+                }
+            }
+
+            .contenedor__topicos {
+                background-color: $GRAY;
+                height: 72%;
+                border-radius: 10px;
+                overflow-y: scroll;
+
+                /* Personalización de la barra de desplazamiento */
+                &::-webkit-scrollbar {
+                    width: 5px; /* Ancho de la barra de desplazamiento */
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background-color: $DARK_BLUE; /* Color del pulgar de la barra de desplazamiento */
+                    border-radius: 6px; /* Radio de la esquina del pulgar */
+                }
+
+                &::-webkit-scrollbar-track {
+                    background-color: transparent; /* Color del fondo de la barra de desplazamiento */
+                }
+            }
+        }
+
+        .lado__derecho {
+            border: solid 1px blue;
+            flex: 1;
+            height: 76vh;
+            padding: 1rem;
+
+            .mini__aside__banner {
+                border: solid 1px;
+                min-height: 100%;
+            }
+        }
+    }
 }
