@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Topico = ({ topicoFake }) => {
-
-    console.log(topicoFake);
-
     return (
         <div className="topico__tarjeta">
             <div className="contenido__izq">
