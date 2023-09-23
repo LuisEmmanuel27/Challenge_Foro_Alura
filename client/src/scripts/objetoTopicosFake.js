@@ -1,3 +1,14 @@
+import User1 from "../assets/usuarios/User1.png";
+import User2 from "../assets/usuarios/User2.png";
+import User3 from "../assets/usuarios/User3.png";
+import User4 from "../assets/usuarios/User4.png";
+import User5 from "../assets/usuarios/User5.png";
+import User6 from "../assets/usuarios/User6.png";
+import User7 from "../assets/usuarios/User7.png";
+import User8 from "../assets/usuarios/User8.png";
+import User9 from "../assets/usuarios/User9.png";
+import User10 from "../assets/usuarios/User10.png";
+
 export const topicoDataFake = [
     {
         id: 1,
@@ -9,6 +20,7 @@ export const topicoDataFake = [
         autor: "Autor1",
         curso: "java",
         tags: "duda",
+        foto: User1,
         respuestas: [
             {
                 id: 101,
@@ -35,6 +47,7 @@ export const topicoDataFake = [
         curso: "python",
         tags: "programacion",
         respuestas: [],
+        foto: User2,
     },
     {
         id: 3,
@@ -47,6 +60,7 @@ export const topicoDataFake = [
         curso: "javascript",
         tags: "duda",
         respuestas: [],
+        foto: User3,
     },
     {
         id: 4,
@@ -58,6 +72,7 @@ export const topicoDataFake = [
         autor: "Autor4",
         curso: "java",
         tags: "off_topic",
+        foto: User4,
         respuestas: [
             {
                 id: 103,
@@ -77,6 +92,7 @@ export const topicoDataFake = [
         autor: "Autor5",
         curso: "python",
         tags: "programacion",
+        foto: User5,
         respuestas: [
             {
                 id: 104,
@@ -109,6 +125,7 @@ export const topicoDataFake = [
         curso: "javascript",
         tags: "off_topic",
         respuestas: [],
+        foto: User6,
     },
     {
         id: 7,
@@ -121,6 +138,7 @@ export const topicoDataFake = [
         curso: "java",
         tags: "duda",
         respuestas: [],
+        foto: User7,
     },
     {
         id: 8,
@@ -133,6 +151,7 @@ export const topicoDataFake = [
         curso: "python",
         tags: "programacion",
         respuestas: [],
+        foto: User8,
     },
     {
         id: 9,
@@ -144,6 +163,7 @@ export const topicoDataFake = [
         autor: "Autor9",
         curso: "javascript",
         tags: "duda",
+        foto: User9,
         respuestas: [
             {
                 id: 107,
@@ -169,6 +189,7 @@ export const topicoDataFake = [
         autor: "Autor10",
         curso: "java",
         tags: "off_topic",
+        foto: User10,
         respuestas: [],
     }
 ];

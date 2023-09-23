@@ -5,9 +5,12 @@ const ListadoTopicos = () => {
     return (
         <div className='contenedor__topicos'>
             {
-                topicoDataFake.map(topicoFake => (
-                    <Topico key={topicoFake.id} topicoFake={topicoFake} />
-                ))
+                topicoDataFake ?
+                    topicoDataFake.map(topicoFake => (
+                        <Topico key={topicoFake.id} topicoFake={topicoFake} />
+                    ))
+                    :
+                    <h1 className="vacio">no hay topicos que mostrar 😓</h1>
             }
         </div>
     )
