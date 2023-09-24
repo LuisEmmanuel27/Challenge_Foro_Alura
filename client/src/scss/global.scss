@@ -177,97 +177,97 @@ body {
     }
 }
 
-/* ESTILOS DEL FORO */
+.header {
+    @include mixinsfunc.flexBox(space-between, 0);
+    padding: 1rem 2rem;
+    background-color: $DARK_BLUE;
+    overflow: visible;
 
-.foro__main {
-    min-height: 100vh;
+    .logo {
+        width: 15%;
+        height: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
 
-    .header {
-        @include mixinsfunc.flexBox(space-between, 0);
-        padding: 1rem 2rem;
-        background-color: $DARK_BLUE;
-        overflow: visible;
+        picture {
+            width: 50%;
+            height: 100%;
 
-        .logo {
-            width: 15%;
-            height: 15%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-
-            picture {
-                width: 50%;
-                height: 100%;
-
-                img {
-                    @include mixinsfunc.img();
-                }
-            }
-
-            span {
-                text-transform: uppercase;
-                color: $WHITE;
+            img {
+                @include mixinsfunc.img();
             }
         }
 
-        .usuario {
-            width: auto;
+        span {
+            text-transform: uppercase;
+            color: $WHITE;
+        }
+    }
+
+    .usuario {
+        width: auto;
+        height: auto;
+        position: relative;
+        overflow: visible;
+
+        .img {
+            max-width: 120px;
+            max-height: 120px;
+            overflow: hidden;
+            background-color: $BLUE;
+            border: solid 2px $GRAY_BLUE;
+            border-radius: 50%;
+            cursor: pointer;
+
+            img {
+                @include mixinsfunc.img();
+            }
+        }
+
+        .drop_down_menu {
+            opacity: 0;
+            transform: translateY(-10px);
+            position: absolute;
+            max-width: 200px;
             height: auto;
-            position: relative;
-            overflow: visible;
+            padding: 1rem 2rem;
+            right: 2px;
+            bottom: -90px;
+            background-color: $GRAY_BLUE;
+            border-radius: 20px;
+            transition: all 0.2s linear;
+            z-index: -100;
 
-            .img {
-                max-width: 120px;
-                max-height: 120px;
-                overflow: hidden;
-                background-color: $BLUE;
-                border: solid 2px $GRAY_BLUE;
-                border-radius: 50%;
-                cursor: pointer;
-
-                img {
-                    @include mixinsfunc.img();
-                }
+            &.active {
+                opacity: 1;
+                transform: translateY(0);
+                z-index: 100;
             }
 
-            .drop_down_menu {
-                opacity: 0;
-                transform: translateY(-10px);
-                position: absolute;
-                max-width: 200px;
-                height: auto;
-                padding: 1rem 2rem;
-                right: 2px;
-                bottom: -90px;
-                background-color: $GRAY_BLUE;
-                border-radius: 20px;
+            button {
+                border: solid 1px transparent;
+                width: 100%;
+                cursor: pointer;
+                background-color: transparent;
+                color: $DARK_BLUE;
+                font-size: 1em;
                 transition: all 0.2s linear;
-                z-index: -100;
 
-                &.active {
-                    opacity: 1;
-                    transform: translateY(0);
-                    z-index: 100;
-                }
-
-                button {
-                    border: solid 1px transparent;
-                    width: 100%;
-                    cursor: pointer;
-                    background-color: transparent;
-                    color: $DARK_BLUE;
-                    font-size: 1em;
-                    transition: all 0.2s linear;
-
-                    &:hover {
-                        border-bottom: solid 1px $WHITE;
-                        color: $WHITE;
-                    }
+                &:hover {
+                    border-bottom: solid 1px $WHITE;
+                    color: $WHITE;
                 }
             }
         }
     }
+}
+
+/* ESTILOS DEL FORO */
+
+.foro__main {
+    min-height: 100vh;
 
     .contenedor__foro {
         min-height: 78vh;
@@ -351,7 +351,7 @@ body {
                     margin-bottom: 10px;
                     @include mixinsfunc.flexBox(center, 0);
                     padding: 8px 20px;
-                    border-radius: 20px;
+                    border-radius: 10px;
 
                     .contenido__izq {
                         flex: 1;
@@ -455,12 +455,124 @@ body {
             .mini__aside__banner {
                 min-height: 100%;
                 background-color: $GRAY;
-                border-radius: 20px;
+                border-radius: 10px;
                 @include mixinsfunc.flexBox(center, 1rem);
                 flex-direction: column;
 
                 h1 {
                     margin-top: 1rem;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: $DARK_BLUE;
+                }
+
+                .lottie {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
+
+.creat__topic__cont {
+    min-height: 100vh;
+
+    .contenedor__crear {
+        min-height: 78vh;
+        @include mixinsfunc.flexBox(center, 0);
+
+        .lado__izq {
+            flex: 2;
+            height: 76vh;
+            padding: 1rem;
+
+            .titular {
+                text-align: start;
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                text-transform: uppercase;
+                font-size: 17px;
+                letter-spacing: 1px;
+                color: $BLUE;
+            }
+
+            .titulo {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                margin-bottom: 20px;
+
+                input {
+                    width: 50%;
+                    padding: 3px;
+                    border: none;
+                    border-bottom: solid 2px $DARK_BLUE;
+                    background-color: transparent;
+                    outline: none;
+                    font-size: 15px;
+                }
+            }
+
+            .topic_curso {
+                margin-bottom: 15px;
+
+                h2 {
+                    margin-bottom: 10px;
+                }
+                .select_cont {
+                    @include mixinsfunc.flexBox(center, 3rem);
+
+                    select {
+                        width: 130px;
+                        padding: 3px;
+                        background-color: transparent;
+                        border: none;
+                        border-bottom: solid 2px $DARK_BLUE;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .quill {
+                .ql-toolbar,
+                .ql-formats,
+                .ql-picker {
+                    overflow: visible;
+                }
+
+                .ql-container {
+                    height: 150px;
+                }
+            }
+
+            .btn__contenedor {
+                margin-top: 10px;
+                display: flex;
+                gap: 3rem;
+
+                button {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .lado__der {
+            flex: 1;
+            max-height: 100vh;
+            padding: 1rem;
+            overflow-y: hidden;
+
+            aside {
+                min-height: 100%;
+                background-color: $GRAY;
+                border-radius: 10px;
+                @include mixinsfunc.flexBox(center, 0);
+                flex-direction: column;
+
+                h1 {
+                    margin-top: 1.4rem;
                     text-align: center;
                     text-transform: uppercase;
                     color: $DARK_BLUE;
