@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Topico = ({ topicoFake }) => {
+
+    const NAVIGATE = useNavigate();
+
+    const handleMostrarTopico = () => {
+        NAVIGATE(`/foro/topico/${topicoFake.autor}`, { state: { topicoFake } });
+    }
+
     return (
         <div className="topico__tarjeta">
             <div className="contenido__izq">
-                <Link to="/"><h1>{topicoFake.titulo}</h1></Link>
+                <div
+                    className="titulo"
+                    style={{ cursor: "pointer" }}
+                    onClick={handleMostrarTopico}
+                >
+                    <h1>{topicoFake.titulo}</h1>
+                </div>
 
                 <div className="tags_cursos">
                     <span className="tag">{topicoFake.tags}</span>

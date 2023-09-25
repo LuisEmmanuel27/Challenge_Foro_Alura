@@ -1,10 +1,8 @@
 import 'react-quill/dist/quill.snow.css';
-import QuillComp from './QuillComp';
+import QuillComp from '../QuillComp';
 import { Link } from 'react-router-dom';
 
 const FormCrearTop = () => {
-
-
     return (
         <div className='contenedor__form__nuvTopico'>
             <div className='titulo'>

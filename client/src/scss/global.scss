@@ -267,7 +267,7 @@ body {
 /* ESTILOS DEL FORO */
 
 .foro__main {
-    min-height: 100vh;
+    height: 100vh;
 
     .contenedor__foro {
         min-height: 78vh;
@@ -475,7 +475,7 @@ body {
 }
 
 .creat__topic__cont {
-    min-height: 100vh;
+    height: 100vh;
 
     .contenedor__crear {
         min-height: 78vh;
@@ -582,6 +582,217 @@ body {
                     width: 90%;
                 }
             }
+        }
+    }
+}
+
+.topico__main {
+    height: 100vh;
+    padding-bottom: 3rem;
+
+    h1 {
+        color: $DARK_BLUE;
+        font-size: 2.5rem;
+        border-bottom: solid 1px $DARK_BLUE;
+        padding-bottom: 5px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 6px; /* Ancho de la barra de desplazamiento */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $DARK_BLUE; /* Color del pulgar de la barra de desplazamiento */
+        border-radius: 6px; /* Radio de la esquina del pulgar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* Color del fondo de la barra de desplazamiento */
+    }
+
+    .contenido__topico {
+        padding: 1rem 3rem;
+
+        .header__topico {
+            .titulo_fecha {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 20px;
+
+                span {
+                    color: $BLUE;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .tags_cruso {
+            display: flex;
+            gap: 2rem;
+            margin: 1rem 0;
+
+            span {
+                background-color: $GRAY;
+                color: $DARK_BLUE;
+                border: solid 1px $GRAY_BLUE;
+                padding: 6px 8px;
+                border-radius: 3px;
+                text-transform: capitalize;
+            }
+        }
+
+        .autor__mensaje {
+            display: flex;
+
+            .autor {
+                height: fit-content;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+
+                img {
+                    border: solid 1px $DARK_BLUE;
+                    background-color: $GRAY_BLUE;
+                    border-radius: 50%;
+                    width: 150px;
+                }
+
+                figcaption {
+                    font-size: 12px;
+                    color: $WHITE;
+                    background-color: $GRAY_BLUE;
+                    padding: 3px 6px;
+                    border-radius: 3px;
+                }
+            }
+
+            .mensaje {
+                flex: 1;
+                min-height: 200px;
+                font-size: 17px;
+                color: $DARK_BLUE;
+                background-color: $GRAY;
+                padding: 10px;
+                border-radius: 10px;
+                text-align: justify;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    .titulo_respuestas,
+    .contenedor__respuestas,
+    .form__respuesta__nueva {
+        padding: 0 3rem;
+    }
+
+    .titulo_respuestas {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 1.1rem;
+
+        span {
+            font-size: 20px;
+            color: $BLUE;
+        }
+
+        h2 {
+            color: $DARK_BLUE;
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
+
+    .contenedor__respuestas {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .respuesta {
+            background-color: $GRAY;
+            padding: 10px 15px;
+            border-radius: 10px;
+
+            .autor__mensaje {
+                display: flex;
+
+                .autor {
+                    height: fit-content;
+                    padding: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                        border: solid 1px $DARK_BLUE;
+                        background-color: $GRAY_BLUE;
+                        border-radius: 50%;
+                        width: 150px;
+                    }
+
+                    figcaption {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: 12px;
+                        color: $WHITE;
+                        background-color: $GRAY_BLUE;
+                        padding: 3px 6px;
+                        border-radius: 3px;
+                    }
+
+                    .check {
+                        @include mixinsfunc.flexBox(center, 5px);
+
+                        label {
+                            font-size: 13px;
+                            color: $DARK_BLUE;
+                        }
+                    }
+                }
+
+                .mensaje {
+                    flex: 1;
+                    min-height: 200px;
+                    font-size: 17px;
+                    color: $DARK_BLUE;
+                    background-color: $GRAY;
+                    padding: 10px;
+                    border-radius: 10px;
+                    text-align: justify;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+
+    .form__respuesta__nueva {
+        margin-top: 1rem;
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .quill {
+            .ql-toolbar,
+            .ql-formats,
+            .ql-picker {
+                overflow: visible;
+            }
+
+            .ql-container {
+                height: 200px;
+            }
+        }
+
+        .cont_btn {
+            margin-top: 1rem;
         }
     }
 }

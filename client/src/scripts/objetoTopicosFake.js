@@ -8,12 +8,13 @@ import User7 from "../assets/usuarios/User7.png";
 import User8 from "../assets/usuarios/User8.png";
 import User9 from "../assets/usuarios/User9.png";
 import User10 from "../assets/usuarios/User10.png";
+import UserRes from "../assets/usuarios/respuestaUser.png";
 
 export const topicoDataFake = [
     {
         id: 1,
         titulo: "Tópico 1",
-        mensaje: "Mensaje del tópico 1...",
+        mensaje: "Eiusmod anim minim ut elit velit exercitation officia ut deserunt incididunt ex mollit. Consectetur laborum sunt tempor id in occaecat Lorem labore cillum nisi. Fugiat eu tempor laborum excepteur. Eiusmod enim Lorem ex magna cupidatat consectetur cillum ad incididunt. Mollit tempor ad eu proident magna in ipsum ullamco reprehenderit proident consectetur in consequat. Irure cillum occaecat incididunt voluptate velit quis.",
         contenido: "Este es el contenido del tópico 1.",
         fecha: "13/11/2023", // dd/mm/yyyy
         estatus: true,
@@ -24,15 +25,17 @@ export const topicoDataFake = [
         respuestas: [
             {
                 id: 101,
-                mensaje: "Respuesta 1 al Tópico 1",
+                mensaje: "Cupidatat Lorem amet dolore enim laboris nisi Lorem mollit culpa quis exercitation. Cillum amet ex culpa laboris cillum tempor consequat labore laboris laboris quis exercitation nisi. Pariatur deserunt adipisicing aute et. Velit sunt et proident consequat dolor magna esse aute esse ea sit irure dolor dolore.",
                 autor: "Usuario1",
-                fecha: "14/11/2023"
+                fecha: "14/11/2023",
+                foto: UserRes
             },
             {
                 id: 102,
                 mensaje: "Respuesta 2 al Tópico 1",
                 autor: "Usuario2",
-                fecha: "15/11/2023"
+                fecha: "15/11/2023",
+                foto: UserRes
             }
         ]
     },
@@ -78,7 +81,8 @@ export const topicoDataFake = [
                 id: 103,
                 mensaje: "Respuesta 1 al Tópico 4",
                 autor: "Usuario3",
-                fecha: "17/11/2023"
+                fecha: "17/11/2023",
+                foto: UserRes
             }
         ]
     },
@@ -98,19 +102,22 @@ export const topicoDataFake = [
                 id: 104,
                 mensaje: "Respuesta 1 al Tópico 5",
                 autor: "Usuario3",
-                fecha: "17/11/2023"
+                fecha: "17/11/2023",
+                foto: UserRes
             },
             {
                 id: 105,
                 mensaje: "Respuesta 2 al Tópico 5",
                 autor: "Usuario7",
-                fecha: "18/11/2023"
+                fecha: "18/11/2023",
+                foto: UserRes
             },
             {
                 id: 106,
                 mensaje: "Respuesta 3 al Tópico 5",
                 autor: "Usuario8",
-                fecha: "20/11/2023"
+                fecha: "20/11/2023",
+                foto: UserRes
             },
         ],
     },
@@ -169,13 +176,15 @@ export const topicoDataFake = [
                 id: 107,
                 mensaje: "Respuesta 1 al Tópico 5",
                 autor: "Usuario9",
-                fecha: "21/11/2023"
+                fecha: "21/11/2023",
+                foto: UserRes
             },
             {
                 id: 108,
                 mensaje: "Respuesta 2 al Tópico 5",
                 autor: "Usuario10",
-                fecha: "21/11/2023"
+                fecha: "21/11/2023",
+                foto: UserRes
             },
         ],
     },
