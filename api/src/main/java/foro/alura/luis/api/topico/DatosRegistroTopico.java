@@ -1,5 +1,18 @@
 package foro.alura.luis.api.topico;
 
-public record DatosRegistroTopico() {
+import java.time.LocalDateTime;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record DatosRegistroTopico(
+        @NotBlank String titulo,
+        @NotBlank String mensaje,
+        @NotNull LocalDateTime fecha,
+        @NotNull Boolean estatus,
+        @NotBlank String tags,
+        @NotBlank String curso
+
+) {
 
 }

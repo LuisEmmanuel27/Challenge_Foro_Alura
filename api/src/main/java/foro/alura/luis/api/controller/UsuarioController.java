@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import foro.alura.luis.api.usuario.DatosRegistroUsuario;
 import foro.alura.luis.api.usuario.UsuarioRepository;
+import jakarta.validation.Valid;
 import foro.alura.luis.api.usuario.Usuario;
 
 @RestController
@@ -15,8 +16,7 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @PostMapping
-    public void registrarUsuario(@RequestBody DatosRegistroUsuario datosRegistroUsuario) {
+    public void registrarUsuario(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario) {
         usuarioRepository.save(new Usuario(datosRegistroUsuario));
     }
-
 }

@@ -12,7 +12,7 @@ CREATE TABLE
         id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         titulo VARCHAR(200) NOT NULL,
         mensaje TEXT NOT NULL,
-        time DATETIME NOT NULL,
+        fecha DATETIME NOT NULL,
         estatus BOOLEAN NOT NULL,
         tags VARCHAR(20) NOT NULL,
         curso VARCHAR(20) NOT NULL

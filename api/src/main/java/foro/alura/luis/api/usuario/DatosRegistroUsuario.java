@@ -1,14 +1,12 @@
 package foro.alura.luis.api.usuario;
 
-import java.util.List;
-
-import foro.alura.luis.api.topico.Topico;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 public record DatosRegistroUsuario(
-        String nombre,
-        String correo,
-        String contraseña,
-        String foto,
-        List<Topico> topicos) {
+        @NotBlank String nombre,
+        @NotBlank @Email String correo,
+        @NotBlank String contraseña,
+        @NotBlank String foto) {
 
 }
