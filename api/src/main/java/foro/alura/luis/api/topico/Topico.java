@@ -8,10 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "topicos")
 @Entity(name = "Topico")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -23,7 +25,7 @@ public class Topico {
 
     private String titulo;
     private String mensaje;
-    private LocalDateTime time;
+    private LocalDateTime fecha;
     private Boolean estatus;
     private String tags;
     private String curso;
@@ -35,11 +37,10 @@ public class Topico {
     public Topico(DatosRegistroTopico datosRegistroTopico) {
         this.titulo = datosRegistroTopico.titulo();
         this.mensaje = datosRegistroTopico.mensaje();
-        this.time = datosRegistroTopico.fecha();
+        this.fecha = datosRegistroTopico.fecha();
         this.estatus = datosRegistroTopico.estatus();
         this.tags = datosRegistroTopico.tags();
         this.curso = datosRegistroTopico.curso();
-        this.usuario = datosRegistroTopico.usuario();
     }
 
 }
