@@ -2,10 +2,10 @@ package foro.alura.luis.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import foro.alura.luis.api.usuario.DatosRegistroUsuario;
 import foro.alura.luis.api.usuario.UsuarioRepository;
-import jakarta.validation.Valid;
 import foro.alura.luis.api.usuario.Usuario;
 
 @RestController

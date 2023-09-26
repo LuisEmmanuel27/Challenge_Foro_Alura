@@ -2,6 +2,7 @@ package foro.alura.luis.api.topico;
 
 import java.time.LocalDateTime;
 
+import foro.alura.luis.api.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,6 +28,10 @@ public class Topico {
     private String tags;
     private String curso;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
     public Topico(DatosRegistroTopico datosRegistroTopico) {
         this.titulo = datosRegistroTopico.titulo();
         this.mensaje = datosRegistroTopico.mensaje();
@@ -34,6 +39,7 @@ public class Topico {
         this.estatus = datosRegistroTopico.estatus();
         this.tags = datosRegistroTopico.tags();
         this.curso = datosRegistroTopico.curso();
+        this.usuario = datosRegistroTopico.usuario();
     }
 
 }
