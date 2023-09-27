@@ -27,8 +27,12 @@ public class Topico {
     private String mensaje;
     private LocalDateTime fecha;
     private Boolean estatus;
-    private String tags;
-    private String curso;
+
+    @Enumerated(EnumType.STRING)
+    private Tags tags;
+
+    @Enumerated(EnumType.STRING)
+    private Cursos curso;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")

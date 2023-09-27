@@ -107,3 +107,43 @@ El uso de `final` en los atributos de la clase y la ausencia de @Autowired en el
     - En las versiones más recientes de Spring (a partir de Spring Framework 4.3), no es necesario usar @Autowired en el constructor si la clase tiene un único constructor. Spring lo detectará automáticamente y realizará la inyección de dependencias.
 
     - En el código proporcionado, la clase TopicoService tiene un único constructor que toma los repositorios como argumentos. Spring es capaz de detectar automáticamente este constructor y realizar la inyección de dependencias sin necesidad de la anotación @Autowired. Esto simplifica el código y lo hace más limpio.
+
+# DatosRegistroTopico.java:
+
+    package foro.alura.luis.api.topico;
+
+    import java.time.LocalDateTime;
+
+    import com.fasterxml.jackson.annotation.JsonProperty;
+
+    import jakarta.validation.constraints.NotBlank;
+    import jakarta.validation.constraints.NotNull;
+
+    public record DatosRegistroTopico(
+            @NotBlank String titulo,
+            @NotBlank String mensaje,
+            @NotNull LocalDateTime fecha,
+            @NotNull Boolean estatus,
+            @NotBlank String tags,
+            @NotBlank String curso,
+            @NotNull @JsonProperty("id_usuario") Long idUsuario
+
+    ) {
+
+    }
+
+## Explicación del @JsonProperty:
+
+En Java, `JsonProperty` es una anotación que se utiliza para especificar el nombre de una propiedad en un objeto `JSON` cuando se serializa o deserializa un objeto Java utilizando la biblioteca Jackson.
+
+En el caso del código proporcionado, la anotación `JsonProperty` se utiliza en el atributo `idUsuario` de la clase DatosRegistroTopico. El nombre de la propiedad en el objeto `JSON` será id_usuario, en lugar de `idUsuario`.
+
+Esto se debe a que el nombre de la propiedad `idUsuario` no cumple con las convenciones de nomenclatura de `JSON`. Las propiedades de `JSON` deben comenzar con una letra minúscula, y no deben contener guiones bajos.
+
+Al utilizar la anotación `JsonProperty`, se garantiza que el nombre de la propiedad en el objeto `JSON` sea válido.
+
+En el código proporcionado, el método crearTopico() de la clase TopicoService utiliza el atributo `idUsuario` para cargar el usuario que creó el tópico.
+
+Sin la anotación `JsonProperty`, el nombre de la propiedad en el objeto `JSON` sería `idUsuario`, lo que podría provocar un error al intentar cargar el usuario.
+
+Por lo tanto, la anotación `JsonProperty` es necesaria en este caso para garantizar que el nombre de la propiedad en el objeto `JSON` sea válido y que el método crearTopico() pueda cargar correctamente el usuario que creó el tópico.

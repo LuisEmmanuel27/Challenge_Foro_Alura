@@ -12,8 +12,8 @@ public record DatosRegistroTopico(
         @NotBlank String mensaje,
         @NotNull LocalDateTime fecha,
         @NotNull Boolean estatus,
-        @NotBlank String tags,
-        @NotBlank String curso,
+        @NotNull Tags tags,
+        @NotNull Cursos curso,
         @NotNull @JsonProperty("id_usuario") Long idUsuario
 
 ) {
