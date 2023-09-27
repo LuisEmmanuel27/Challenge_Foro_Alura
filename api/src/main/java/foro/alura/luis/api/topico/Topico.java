@@ -34,7 +34,7 @@ public class Topico {
     @Enumerated(EnumType.STRING)
     private Cursos curso;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 

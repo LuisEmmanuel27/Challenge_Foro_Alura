@@ -2,7 +2,7 @@ package foro.alura.luis.api.topico;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+// import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ public record DatosRegistroTopico(
         @NotNull Boolean estatus,
         @NotNull Tags tags,
         @NotNull Cursos curso,
-        @NotNull @JsonProperty("id_usuario") Long idUsuario
+        @NotNull Long idUsuario
 
 ) {
 
