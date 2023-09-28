@@ -2,6 +2,7 @@ package foro.alura.luis.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,9 +39,6 @@ public class TopicoController {
 
     @GetMapping
     public Page<DatosListadoTopico> ListandoTopicos(Pageable paginacion) {
-        // return
-        // topicoRepository.findAll(paginacion).map(topicoMapper::toDatosListadoTopico);
-
         return topicoRepository.findByActivoTrue(paginacion).map(topicoMapper::toDatosListadoTopico);
     }
 
@@ -53,9 +51,10 @@ public class TopicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void eliminarTopico(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarTopico(@PathVariable Long id) {
         Topico topico = topicoRepository.getReferenceById(id);
         topico.desactivarTopico();
+        return ResponseEntity.noContent().build();
     }
 
 }
