@@ -47,9 +47,15 @@ public class TopicoController {
         return ResponseEntity.created(url).body(datosRespuestaTopico);
     }
 
+    // @GetMapping
+    // public Page<DatosListadoTopico> ListandoTopicos(Pageable paginacion) {
+    // return
+    // topicoRepository.findByActivoTrue(paginacion).map(topicoMapper::toDatosListadoTopico);
+    // }
+
     @GetMapping
-    public Page<DatosListadoTopico> ListandoTopicos(Pageable paginacion) {
-        return topicoRepository.findByActivoTrue(paginacion).map(topicoMapper::toDatosListadoTopico);
+    public ResponseEntity<Page<DatosListadoTopico>> listandoTopicos(Pageable paginacion) {
+        return ResponseEntity.ok(topicoRepository.findByActivoTrue(paginacion).map(topicoMapper::toDatosListadoTopico));
     }
 
     @PutMapping
