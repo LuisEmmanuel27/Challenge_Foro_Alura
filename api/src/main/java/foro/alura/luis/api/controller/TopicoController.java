@@ -74,6 +74,17 @@ public class TopicoController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosRespuestaTopico> retornaDatosTopico(@PathVariable Long id) {
+        Topico topico = topicoRepository.getReferenceById(id);
+
+        DatosRespuestaTopico datosRespuestaTopico = new DatosRespuestaTopico(id, topico.getTitulo(),
+                topico.getMensaje(), topico.getFecha(), topico.getEstatus(), topico.getTags(),
+                topico.getCurso());
+
+        return ResponseEntity.ok(datosRespuestaTopico);
+    }
+
     private DatosRespuestaTopico construirDatosRespuestaTopico(Topico topico) {
         return new DatosRespuestaTopico(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFecha(),
                 topico.getEstatus(), topico.getTags(), topico.getCurso());
