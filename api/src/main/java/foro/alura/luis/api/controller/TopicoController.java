@@ -1,10 +1,13 @@
 package foro.alura.luis.api.controller;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -34,8 +37,14 @@ public class TopicoController {
 
     @PostMapping
     @Transactional
-    public void registrarTopico(@RequestBody @Valid DatosRegistroTopico datosRegistroTopico) {
-        topicoService.crearTopico(datosRegistroTopico);
+    public ResponseEntity<DatosRespuestaTopico> registrarTopico(
+            @RequestBody @Valid DatosRegistroTopico datosRegistroTopico, UriComponentsBuilder uriComponentsBuilder) {
+        Topico topico = topicoService.crearTopico(datosRegistroTopico);
+
+        DatosRespuestaTopico datosRespuestaTopico = construirDatosRespuestaTopico(topico);
+        URI url = uriComponentsBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
+
+        return ResponseEntity.created(url).body(datosRespuestaTopico);
     }
 
     @GetMapping
@@ -63,6 +72,12 @@ public class TopicoController {
         Topico topico = topicoRepository.getReferenceById(id);
         topico.desactivarTopico();
         return ResponseEntity.noContent().build();
+    }
+
+    private DatosRespuestaTopico construirDatosRespuestaTopico(Topico topico) {
+        return new DatosRespuestaTopico(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFecha(),
+                topico.getEstatus(), topico.getTags(), topico.getCurso());
+
     }
 
 }

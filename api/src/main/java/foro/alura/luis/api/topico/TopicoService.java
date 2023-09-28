@@ -18,7 +18,7 @@ public class TopicoService {
     }
 
     // Método para crear un nuevo tópico
-    public void crearTopico(DatosRegistroTopico datosRegistroTopico) {
+    public Topico crearTopico(DatosRegistroTopico datosRegistroTopico) {
         // Paso 1: Cargar el usuario desde el repositorio
         Usuario usuario = usuarioRepository.findById(datosRegistroTopico.idUsuario())
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
@@ -28,6 +28,6 @@ public class TopicoService {
         topico.setUsuario(usuario);
 
         // Paso 3: Guardar el tópico en el repositorio
-        topicoRepository.save(topico);
+        return topicoRepository.save(topico);
     }
 }
