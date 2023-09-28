@@ -27,6 +27,7 @@ public class Topico {
     private String mensaje;
     private LocalDateTime fecha;
     private Boolean estatus;
+    private Boolean activo;
 
     @Enumerated(EnumType.STRING)
     private Tags tags;
@@ -39,6 +40,7 @@ public class Topico {
     private Usuario usuario;
 
     public Topico(DatosRegistroTopico datosRegistroTopico) {
+        this.activo = true;
         this.titulo = datosRegistroTopico.titulo();
         this.mensaje = datosRegistroTopico.mensaje();
         this.fecha = datosRegistroTopico.fecha();
@@ -55,6 +57,10 @@ public class Topico {
         if (datosActualizarTopico.mensaje() != null) {
             this.mensaje = datosActualizarTopico.mensaje();
         }
+    }
+
+    public void desactivarTopico() {
+        this.activo = false;
     }
 
 }

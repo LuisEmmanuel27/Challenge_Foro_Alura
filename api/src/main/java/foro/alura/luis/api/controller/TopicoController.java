@@ -31,13 +31,17 @@ public class TopicoController {
     }
 
     @PostMapping
+    @Transactional
     public void registrarTopico(@RequestBody @Valid DatosRegistroTopico datosRegistroTopico) {
         topicoService.crearTopico(datosRegistroTopico);
     }
 
     @GetMapping
     public Page<DatosListadoTopico> ListandoTopicos(Pageable paginacion) {
-        return topicoRepository.findAll(paginacion).map(topicoMapper::toDatosListadoTopico);
+        // return
+        // topicoRepository.findAll(paginacion).map(topicoMapper::toDatosListadoTopico);
+
+        return topicoRepository.findByActivoTrue(paginacion).map(topicoMapper::toDatosListadoTopico);
     }
 
     @PutMapping
@@ -45,6 +49,13 @@ public class TopicoController {
     public void actualizarTopico(@RequestBody @Valid DatosActualizarTopico datosActualizarTopico) {
         Topico topico = topicoRepository.getReferenceById(datosActualizarTopico.id());
         topico.actualizarDatos(datosActualizarTopico);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void eliminarTopico(@PathVariable Long id) {
+        Topico topico = topicoRepository.getReferenceById(id);
+        topico.desactivarTopico();
     }
 
 }
