@@ -20,6 +20,7 @@ public class TopicoMapper {
         String formattedFecha = topico.getFecha().format(formatter);
 
         return new DatosListadoTopico(
+                topico.getId(),
                 topico.getTitulo(),
                 topico.getMensaje(),
                 formattedFecha,

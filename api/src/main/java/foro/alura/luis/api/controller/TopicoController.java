@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import foro.alura.luis.api.topico.DatosActualizarTopico;
 import foro.alura.luis.api.topico.DatosListadoTopico;
 import foro.alura.luis.api.topico.DatosRegistroTopico;
+import foro.alura.luis.api.topico.Topico;
 import foro.alura.luis.api.topico.TopicoMapper;
 import foro.alura.luis.api.topico.TopicoRepository;
 import foro.alura.luis.api.topico.TopicoService;
@@ -35,6 +38,13 @@ public class TopicoController {
     @GetMapping
     public Page<DatosListadoTopico> ListandoTopicos(Pageable paginacion) {
         return topicoRepository.findAll(paginacion).map(topicoMapper::toDatosListadoTopico);
+    }
+
+    @PutMapping
+    @Transactional
+    public void actualizarTopico(@RequestBody @Valid DatosActualizarTopico datosActualizarTopico) {
+        Topico topico = topicoRepository.getReferenceById(datosActualizarTopico.id());
+        topico.actualizarDatos(datosActualizarTopico);
     }
 
 }

@@ -2,8 +2,6 @@ package foro.alura.luis.api.topico;
 
 import java.time.LocalDateTime;
 
-// import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
