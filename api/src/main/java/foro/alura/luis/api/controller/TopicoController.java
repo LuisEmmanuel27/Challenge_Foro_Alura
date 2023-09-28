@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import foro.alura.luis.api.topico.DatosActualizarTopico;
 import foro.alura.luis.api.topico.DatosListadoTopico;
 import foro.alura.luis.api.topico.DatosRegistroTopico;
+import foro.alura.luis.api.topico.DatosRespuestaTopico;
 import foro.alura.luis.api.topico.Topico;
 import foro.alura.luis.api.topico.TopicoMapper;
 import foro.alura.luis.api.topico.TopicoRepository;
@@ -44,9 +45,16 @@ public class TopicoController {
 
     @PutMapping
     @Transactional
-    public void actualizarTopico(@RequestBody @Valid DatosActualizarTopico datosActualizarTopico) {
+    public ResponseEntity<DatosRespuestaTopico> actualizarTopico(
+            @RequestBody @Valid DatosActualizarTopico datosActualizarTopico) {
         Topico topico = topicoRepository.getReferenceById(datosActualizarTopico.id());
         topico.actualizarDatos(datosActualizarTopico);
+
+        DatosRespuestaTopico datosRespuestaTopico = new DatosRespuestaTopico(topico.getId(), topico.getTitulo(),
+                topico.getMensaje(), topico.getFecha(), topico.getEstatus(), topico.getTags(),
+                topico.getCurso());
+
+        return ResponseEntity.ok(datosRespuestaTopico);
     }
 
     @DeleteMapping("/{id}")
