@@ -1,8 +1,8 @@
-package foro.alura.luis.api.topico;
+package foro.alura.luis.api.domain.topico;
 
 import java.time.LocalDateTime;
 
-import foro.alura.luis.api.usuario.Usuario;
+import foro.alura.luis.api.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

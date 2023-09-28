@@ -1,4 +1,4 @@
-package foro.alura.luis.api.topico;
+package foro.alura.luis.api.domain.topico;
 
 public enum Cursos {
     JAVA,

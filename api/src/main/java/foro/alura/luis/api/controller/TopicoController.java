@@ -9,16 +9,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import foro.alura.luis.api.domain.topico.DatosActualizarTopico;
+import foro.alura.luis.api.domain.topico.DatosListadoTopico;
+import foro.alura.luis.api.domain.topico.DatosRegistroTopico;
+import foro.alura.luis.api.domain.topico.DatosRespuestaTopico;
+import foro.alura.luis.api.domain.topico.Topico;
+import foro.alura.luis.api.domain.topico.TopicoMapper;
+import foro.alura.luis.api.domain.topico.TopicoRepository;
+import foro.alura.luis.api.domain.topico.TopicoService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import foro.alura.luis.api.topico.DatosActualizarTopico;
-import foro.alura.luis.api.topico.DatosListadoTopico;
-import foro.alura.luis.api.topico.DatosRegistroTopico;
-import foro.alura.luis.api.topico.DatosRespuestaTopico;
-import foro.alura.luis.api.topico.Topico;
-import foro.alura.luis.api.topico.TopicoMapper;
-import foro.alura.luis.api.topico.TopicoRepository;
-import foro.alura.luis.api.topico.TopicoService;
 
 @RestController
 @RequestMapping("/topicos")
@@ -46,12 +46,6 @@ public class TopicoController {
 
         return ResponseEntity.created(url).body(datosRespuestaTopico);
     }
-
-    // @GetMapping
-    // public Page<DatosListadoTopico> ListandoTopicos(Pageable paginacion) {
-    // return
-    // topicoRepository.findByActivoTrue(paginacion).map(topicoMapper::toDatosListadoTopico);
-    // }
 
     @GetMapping
     public ResponseEntity<Page<DatosListadoTopico>> listandoTopicos(Pageable paginacion) {

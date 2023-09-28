@@ -1,9 +1,9 @@
-package foro.alura.luis.api.topico;
+package foro.alura.luis.api.domain.topico;
 
 import org.springframework.stereotype.*;
 
-import foro.alura.luis.api.usuario.Usuario;
-import foro.alura.luis.api.usuario.UsuarioRepository;
+import foro.alura.luis.api.domain.usuario.Usuario;
+import foro.alura.luis.api.domain.usuario.UsuarioRepository;
 
 @Service
 public class TopicoService {

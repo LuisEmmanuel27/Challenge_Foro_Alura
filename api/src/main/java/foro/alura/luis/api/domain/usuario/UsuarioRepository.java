@@ -1,4 +1,4 @@
-package foro.alura.luis.api.usuario;
+package foro.alura.luis.api.domain.usuario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

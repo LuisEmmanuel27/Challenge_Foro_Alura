@@ -1,8 +1,8 @@
-package foro.alura.luis.api.topico;
+package foro.alura.luis.api.domain.topico;
 
 import org.springframework.stereotype.Component;
 
-import foro.alura.luis.api.usuario.DatosListadoUsuario;
+import foro.alura.luis.api.domain.usuario.DatosListadoUsuario;
 
 @Component
 public class TopicoMapper {
