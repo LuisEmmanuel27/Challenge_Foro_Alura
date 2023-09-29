@@ -1,4 +1,4 @@
-package foro.alura.luis.api.infra;
+package foro.alura.luis.api.infra.error;
 
 import java.util.List;
 
