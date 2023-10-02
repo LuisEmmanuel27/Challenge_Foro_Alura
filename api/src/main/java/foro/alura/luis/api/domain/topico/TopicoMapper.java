@@ -10,7 +10,7 @@ public class TopicoMapper {
     public DatosListadoTopico toDatosListadoTopico(Topico topico) {
         DatosListadoUsuario DatosUsuario = new DatosListadoUsuario(
                 topico.getUsuario().getLogin(),
-                topico.getUsuario().getCorreo(),
+                topico.getUsuario().getEmail(),
                 topico.getUsuario().getFoto());
 
         return new DatosListadoTopico(
