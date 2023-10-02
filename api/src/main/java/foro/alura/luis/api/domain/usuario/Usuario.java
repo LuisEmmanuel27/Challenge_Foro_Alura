@@ -37,6 +37,13 @@ public class Usuario implements UserDetails {
         this.foto = datosRegistroUsuario.foto();
     }
 
+    public Usuario(String login, String email, String passwordEncoded, String foto) {
+        this.login = login;
+        this.email = email;
+        this.password = passwordEncoded;
+        this.foto = foto;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
