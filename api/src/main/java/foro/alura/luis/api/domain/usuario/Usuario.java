@@ -18,15 +18,15 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
+    private String login;
     private String correo;
-    private String contraseña;
+    private String password;
     private String foto;
 
     public Usuario(DatosRegistroUsuario datosRegistroUsuario) {
-        this.nombre = datosRegistroUsuario.nombre();
+        this.login = datosRegistroUsuario.login();
         this.correo = datosRegistroUsuario.correo();
-        this.contraseña = datosRegistroUsuario.contraseña();
+        this.password = datosRegistroUsuario.password();
         this.foto = datosRegistroUsuario.foto();
     }
 }

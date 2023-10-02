@@ -1,7 +1,7 @@
 package foro.alura.luis.api.domain.usuario;
 
 public record DatosListadoUsuario(
-		String nombre,
+		String login,
 		String correo,
 		String foto) {
 
