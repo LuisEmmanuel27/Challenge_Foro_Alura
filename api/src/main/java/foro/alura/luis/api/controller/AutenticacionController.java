@@ -12,6 +12,7 @@ import foro.alura.luis.api.domain.usuario.Usuario;
 import foro.alura.luis.api.domain.usuario.DatosAutenticacionUsuario;
 
 import foro.alura.luis.api.infra.security.TokenService;
+import foro.alura.luis.api.infra.security.DatosJWTToken;
 
 @RestController
 @RequestMapping("/login")
@@ -24,7 +25,7 @@ public class AutenticacionController {
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity<String> autenticarUsuario(
+    public ResponseEntity<DatosJWTToken> autenticarUsuario(
             @RequestBody @Valid DatosAutenticacionUsuario datosAutenticacionUsuario) {
         Authentication authToken = new UsernamePasswordAuthenticationToken(datosAutenticacionUsuario.login(),
                 datosAutenticacionUsuario.password());
@@ -33,7 +34,7 @@ public class AutenticacionController {
 
         var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
 
-        return ResponseEntity.ok(JWTtoken);
+        return ResponseEntity.ok(new DatosJWTToken(JWTtoken));
     }
 
 }
