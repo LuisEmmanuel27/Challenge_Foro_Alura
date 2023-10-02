@@ -8,7 +8,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import jakarta.validation.Valid;
 
+import foro.alura.luis.api.domain.usuario.Usuario;
 import foro.alura.luis.api.domain.usuario.DatosAutenticacionUsuario;
+
+import foro.alura.luis.api.infra.security.TokenService;
 
 @RestController
 @RequestMapping("/login")
@@ -17,14 +20,20 @@ public class AutenticacionController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping
-    public ResponseEntity<Void> autenticarUsuario(
-            @RequestBody @Valid DatosAutenticacionUsuario datosAutenticacionUsuario) {
-        Authentication token = new UsernamePasswordAuthenticationToken(datosAutenticacionUsuario.login(),
-                datosAutenticacionUsuario.password());
-        authenticationManager.authenticate(token);
+    @Autowired
+    private TokenService tokenService;
 
-        return ResponseEntity.ok().build();
+    @PostMapping
+    public ResponseEntity<String> autenticarUsuario(
+            @RequestBody @Valid DatosAutenticacionUsuario datosAutenticacionUsuario) {
+        Authentication authToken = new UsernamePasswordAuthenticationToken(datosAutenticacionUsuario.login(),
+                datosAutenticacionUsuario.password());
+
+        var usuarioAutenticado = authenticationManager.authenticate(authToken);
+
+        var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
+
+        return ResponseEntity.ok(JWTtoken);
     }
 
 }
