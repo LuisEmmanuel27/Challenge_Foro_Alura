@@ -32,9 +32,12 @@ public class AutenticacionController {
 
         var usuarioAutenticado = authenticationManager.authenticate(authToken);
 
-        var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
+        Usuario usuario = (Usuario) usuarioAutenticado.getPrincipal();
+        var JWTtoken = tokenService.generarToken(usuario);
 
-        return ResponseEntity.ok(new DatosJWTToken(JWTtoken));
+        DatosJWTToken response = new DatosJWTToken(JWTtoken, usuario.getLogin(), usuario.getEmail(), usuario.getFoto());
+
+        return ResponseEntity.ok(response);
     }
 
 }

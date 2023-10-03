@@ -12,6 +12,7 @@ import foro.alura.luis.api.domain.usuario.DatosRespuestaUsuario;
 import foro.alura.luis.api.domain.usuario.Usuario;
 import foro.alura.luis.api.domain.usuario.UsuarioRepository;
 import foro.alura.luis.api.domain.usuario.UsuarioService;
+import foro.alura.luis.api.infra.security.TokenService;
 import jakarta.validation.Valid;
 
 @RestController
@@ -24,14 +25,20 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity<DatosRespuestaUsuario> registrarUsuario(
             @RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario, UriComponentsBuilder uriComponentsBuilder) {
 
         Usuario usuario = usuarioService.registrarUsuario(datosRegistroUsuario);
 
-        DatosRespuestaUsuario datosRespuestaUsuario = construirDatosRespuestaUsuario(usuario);
+        String jwtToken = tokenService.generarToken(usuario);
         URI url = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getId()).toUri();
+
+        DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(
+                usuario.getId(), usuario.getLogin(), usuario.getEmail(), jwtToken);
 
         return ResponseEntity.created(url).body(datosRespuestaUsuario);
     }
@@ -41,12 +48,8 @@ public class UsuarioController {
         Usuario usuario = usuarioRepository.getReferenceById(id);
 
         DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(usuario.getId(), usuario.getLogin(),
-                usuario.getEmail());
+                usuario.getEmail(), "empty");
 
         return ResponseEntity.ok(datosRespuestaUsuario);
-    }
-
-    private DatosRespuestaUsuario construirDatosRespuestaUsuario(Usuario usuario) {
-        return new DatosRespuestaUsuario(usuario.getId(), usuario.getLogin(), usuario.getEmail());
     }
 }
