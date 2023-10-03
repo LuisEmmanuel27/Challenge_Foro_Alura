@@ -1,0 +1,9 @@
+{
+    "properties": [
+        {
+            "name": "api.security.secret",
+            "type": "java.lang.String",
+            "description": "enviroment variable 'api.security.secret'"
+        }
+    ]
+}
