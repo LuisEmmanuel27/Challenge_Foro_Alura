@@ -70,15 +70,9 @@ public class TopicoController {
         Topico topico = topicoRepository.getReferenceById(idTopico);
 
         Long idUsuarioDelTopico = topico.getUsuario().getId();
+        Long idUsuarioDelToken = obtenerIdUsuarioDesdeToken(authentication);
 
-        // Obtener el UserDetails del usuario autenticado
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String login = userDetails.getUsername();
-
-        // Obtener el usuario correspondiente al login desde el repositorio
-        Usuario usuario = (Usuario) usuarioRepository.findByLogin(login);
-
-        if (usuario != null && usuario.getId().equals(idUsuarioDelTopico)) {
+        if (idUsuarioDelToken != null && idUsuarioDelToken.equals(idUsuarioDelTopico)) {
             // Realizar la actualización del tópico
             topico.actualizarDatos(datosActualizarTopico);
 
@@ -104,15 +98,9 @@ public class TopicoController {
         Topico topico = topicoRepository.getReferenceById(id);
 
         Long idUsuarioDelTopico = topico.getUsuario().getId();
+        Long idUsuarioDelToken = obtenerIdUsuarioDesdeToken(authentication);
 
-        // Obtener el UserDetails del usuario autenticado
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String login = userDetails.getUsername();
-
-        // Obtener el usuario correspondiente al login desde el repositorio
-        Usuario usuario = (Usuario) usuarioRepository.findByLogin(login);
-
-        if (usuario != null && usuario.getId().equals(idUsuarioDelTopico)) {
+        if (idUsuarioDelToken != null && idUsuarioDelToken.equals(idUsuarioDelTopico)) {
             topico.desactivarTopico();
             return ResponseEntity.noContent().build();
         } else {
@@ -136,6 +124,16 @@ public class TopicoController {
         return new DatosRespuestaTopico(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFecha(),
                 topico.getEstatus(), topico.getTags(), topico.getCurso());
 
+    }
+
+    private Long obtenerIdUsuarioDesdeToken(Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String login = userDetails.getUsername();
+
+        // Obtener el usuario correspondiente al login desde el repositorio
+        Usuario usuario = (Usuario) usuarioRepository.findByLogin(login);
+
+        return usuario != null ? usuario.getId() : null;
     }
 
 }
