@@ -35,6 +35,7 @@ Al final del desarrollo de esta API debebe tener las siguientes funcionalidades:
   - SQL
   - MySQL
   - Flyway
+  - Firebase
   - Patrón MVC
   - Vite/React.js
   - SASS
