@@ -38,7 +38,7 @@ body {
     text-align: center;
     font-size: 3rem;
     text-transform: uppercase;
-    margin: 1.5rem auto;
+    margin: 1.1rem auto;
     color: $DARK_BLUE;
 }
 
@@ -49,6 +49,7 @@ body {
     border-radius: 20px;
     padding: 2rem 3rem;
     flex-direction: column;
+    max-width: 40%;
 
     .formulario {
         width: 80%;
@@ -58,23 +59,41 @@ body {
         .input__caja {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 5px;
             width: 100%;
 
             label {
                 color: $DARK_BLUE;
-                font-size: 1.3rem;
+                font-size: 1.1rem;
             }
 
             input {
                 width: 100%;
-                padding: 10px;
+                padding: 5px 10px;
                 border: none;
                 outline: none;
                 background: transparent;
                 border-bottom: solid 3px $DARK_BLUE;
                 color: $DARK_BLUE;
-                font-size: 1.2rem;
+                font-size: 15px;
+            }
+
+            .mensaje {
+                font-size: 12px;
+                text-align: justify;
+                color: rgb(155, 0, 0);
+            }
+
+            .msj2 {
+                color: red;
+            }
+        }
+
+        .input__caja__foto {
+            label,
+            input {
+                color: $DARK_BLUE;
+                font-weight: bolder;
             }
         }
     }
@@ -173,6 +192,14 @@ body {
         &:nth-child(2) {
             right: 5px;
             animation: apareciendoDer 1s ease-in-out;
+        }
+    }
+}
+
+.SignUp {
+    .contenedor__form {
+        h1 {
+            font-size: 2.3rem;
         }
     }
 }
