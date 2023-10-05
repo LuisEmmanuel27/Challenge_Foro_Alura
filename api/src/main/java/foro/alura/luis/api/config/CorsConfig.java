@@ -1,30 +1,33 @@
-package foro.alura.luis.api.config;
+// package foro.alura.luis.api.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
+// import org.springframework.context.annotation.Bean;
+// import org.springframework.context.annotation.Configuration;
+// import org.springframework.web.cors.CorsConfiguration;
+// import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+// import org.springframework.web.filter.CorsFilter;
 
-@Configuration
-public class CorsConfig {
+// @Configuration
+// public class CorsConfig {
 
-    @Bean
-    CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
+// @Bean
+// public CorsFilter corsFilter() {
+// UrlBasedCorsConfigurationSource source = new
+// UrlBasedCorsConfigurationSource();
+// CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:5173");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("GET");
-        config.addAllowedMethod("POST");
-        config.addAllowedMethod("PUT");
-        config.addAllowedMethod("DELETE");
+// // Permite solicitudes desde tu aplicación React en http://localhost:5173
+// config.addAllowedOrigin("http://localhost:5173");
 
-        source.registerCorsConfiguration("/**", config);
+// // Configura otros permisos de CORS según sea necesario
+// config.addAllowedMethod("GET");
+// config.addAllowedMethod("POST");
+// config.addAllowedMethod("PUT");
+// config.addAllowedMethod("DELETE");
+// config.addAllowedMethod("OPTIONS");
+// config.addAllowedMethod("HEAD");
+// config.addAllowedHeader("*");
 
-        return new CorsFilter((CorsConfigurationSource) source);
-    }
-}
+// source.registerCorsConfiguration("/**", config);
+// return new CorsFilter(source);
+// }
+// }

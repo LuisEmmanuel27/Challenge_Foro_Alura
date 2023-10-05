@@ -4,9 +4,11 @@ import { validarEmail, validarLogin, validarPass } from '../../helper/validacion
 import { crearUsuario } from '../../helper/api';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
 
+    const navigate = useNavigate();
     const [datosLog, setDatosLog] = useState({
         login: null,
         email: null,
@@ -39,7 +41,11 @@ const SignUpForm = () => {
 
     const onSubmit = handleSubmit(async data => {
         try {
-            await crearUsuario(data);
+            const RESPONSE = await crearUsuario(data);
+
+            const USER_DATA_JSON = JSON.stringify(RESPONSE);
+            localStorage.setItem('userData', USER_DATA_JSON);
+
             toast.success("Login exitoso", {
                 position: "bottom-right",
                 style: {
@@ -47,6 +53,11 @@ const SignUpForm = () => {
                     color: "green"
                 }
             })
+
+            setTimeout(() => {
+                navigate("/foro");
+            }, 3000);
+
         } catch (error) {
             toast.error(error, {
                 position: "bottom-right",
