@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { storage } from "../../scripts/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const InputFoto = ({ datosLog, setDatosLog }) => {
+
+    const [uploading, setUploading] = useState(false);
+    const [uploadMessage, setUploadMessage] = useState("");
 
     const handleUpladingFoto = (e) => {
         const file = e.target.files[0]; // Obtener el archivo seleccionado
@@ -12,6 +16,9 @@ const InputFoto = ({ datosLog, setDatosLog }) => {
 
             const uploadTask = uploadBytesResumable(storageRef, file);
 
+            setUploading(true);
+            setUploadMessage("Subiendo imagen...");
+
             // Register three observers:
             // 1. 'state_changed' observer, called any time the state changes
             // 2. Error observer, called on failure
@@ -19,6 +26,8 @@ const InputFoto = ({ datosLog, setDatosLog }) => {
             uploadTask.on(
                 (error) => {
                     console.log(error);
+                    setUploading(false);
+                    setUploadMessage("Error al subir imagen");
                 },
                 () => {
                     // Handle successful uploads on complete
@@ -26,6 +35,8 @@ const InputFoto = ({ datosLog, setDatosLog }) => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         // Llama a una función de devolución de llamada para manejar la URL
                         handleImageUrl(downloadURL);
+                        setUploading(false);
+                        setUploadMessage("Imagen subida con éxito");
                     });
                 }
             );
@@ -48,6 +59,8 @@ const InputFoto = ({ datosLog, setDatosLog }) => {
                 accept='.jpg, .jpeg, .png'
                 onChange={handleUpladingFoto}
             />
+            {uploading && <div className="loader">Cargando...</div>}
+            {uploadMessage && <p className='mensaje'>{uploadMessage}</p>}
         </div>
     )
 }
