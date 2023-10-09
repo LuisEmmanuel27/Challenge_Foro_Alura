@@ -15,3 +15,12 @@ export const crearUsuario = (usuario) => {
     });
 };
 
+export const iniciarSesion = (usuario) => {
+    console.log('Datos del usuario a enviar:', usuario);
+
+    return FORO_API.post("/login", usuario, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+};
