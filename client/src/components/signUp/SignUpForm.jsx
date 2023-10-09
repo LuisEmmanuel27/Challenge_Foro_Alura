@@ -18,7 +18,7 @@ const SignUpForm = () => {
     const [loginError, setLoginError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passError, setPassError] = useState("La contraseña debe contener al menos una mayúscula y un número, maximo 10 caracteres");
-    const { register, handleSubmit, formState: {
+    const { register, formState: {
         errors
     } } = useForm();
 
@@ -39,25 +39,19 @@ const SignUpForm = () => {
         }
     }
 
-    const onSubmit = handleSubmit(async data => {
-        try {
-            const RESPONSE = await crearUsuario(data);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
+        try {
+            const RESPONSE = await crearUsuario(datosLog);
             const USER_DATA_JSON = JSON.stringify(RESPONSE);
+
             localStorage.setItem('userData', USER_DATA_JSON);
 
-            toast.success("Login exitoso", {
-                position: "bottom-right",
-                style: {
-                    backgroundColor: "#333",
-                    color: "green"
-                }
-            })
+            const authToken = localStorage.getItem("userData");
+            console.log(authToken);
 
-            setTimeout(() => {
-                navigate("/foro");
-            }, 3000);
-
+            navigate('/foro');
         } catch (error) {
             toast.error(error, {
                 position: "bottom-right",
@@ -67,10 +61,10 @@ const SignUpForm = () => {
                 }
             })
         }
-    })
+    }
 
     return (
-        <form className='formulario' onSubmit={onSubmit}>
+        <form className='formulario' onSubmit={handleSubmit}>
             <div className='input__caja'>
                 <label htmlFor='login'>Nombre de usuario:</label>
                 <input

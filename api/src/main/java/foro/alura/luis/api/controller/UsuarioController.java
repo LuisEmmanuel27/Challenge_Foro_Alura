@@ -38,7 +38,7 @@ public class UsuarioController {
         URI url = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getId()).toUri();
 
         DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(
-                usuario.getId(), usuario.getLogin(), usuario.getEmail(), jwtToken);
+                usuario.getId(), usuario.getLogin(), usuario.getEmail(), usuario.getFoto(), jwtToken);
 
         return ResponseEntity.created(url).body(datosRespuestaUsuario);
     }
@@ -48,7 +48,7 @@ public class UsuarioController {
         Usuario usuario = usuarioRepository.getReferenceById(id);
 
         DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(usuario.getId(), usuario.getLogin(),
-                usuario.getEmail(), "empty");
+                usuario.getEmail(), usuario.getFoto(), "empty");
 
         return ResponseEntity.ok(datosRespuestaUsuario);
     }

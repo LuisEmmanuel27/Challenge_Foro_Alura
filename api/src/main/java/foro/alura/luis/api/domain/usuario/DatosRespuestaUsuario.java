@@ -4,6 +4,7 @@ public record DatosRespuestaUsuario(
         Long id,
         String login,
         String email,
+        String foto,
         String jwtToken) {
 
 }

@@ -1,17 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const RutasPrivadas = ({ children }) => {
 
-    const navigate = useNavigate();
+    const token = localStorage.getItem('userData');
 
-    const token = localStorage.getItem('jwtToken');
-
-    if (!token) {
-        navigate("/login");
-        return null;
-    }
-
-    return children;
+    if (token) return children;
+    else return <Navigate to="/" />;
 }
 
 export default RutasPrivadas
