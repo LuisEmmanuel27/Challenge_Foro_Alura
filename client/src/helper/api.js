@@ -24,3 +24,23 @@ export const iniciarSesion = (usuario) => {
         },
     });
 };
+
+export const listaTopicos = (token) => {
+    console.log('Token: ', token);
+
+    return FORO_API.get('/topicos', {
+        headers: {
+            Authorization: token,
+        },
+    });
+};
+
+export const listadoRespuestas = (token, id) => {
+    console.log('Token: ', token, 'id Topico: ', id);
+
+    return FORO_API.get(`/respuestas/${id}`, {
+        headers: {
+            Authorization: token,
+        }
+    })
+}

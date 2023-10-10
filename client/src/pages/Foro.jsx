@@ -5,9 +5,6 @@ import ListadoTopicos from "../components/foro/ListadoTopicos"
 
 const Foro = () => {
 
-    const authToken = localStorage.getItem("userData");
-    console.log(JSON.parse(authToken).data.id);
-
     return (
         <div className="foro__main">
             <Header />

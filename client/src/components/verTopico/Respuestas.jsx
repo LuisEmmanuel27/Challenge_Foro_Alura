@@ -1,13 +1,15 @@
+import { formatearFecha } from "../../helper/formatoFecha"
+
 const Respuestas = ({ respuesta }) => {
     return (
         <div className='respuesta'>
             <div className='autor__mensaje'>
                 <figure className="autor">
-                    <img src={respuesta.foto} alt="foto_user_res" width={"100px"} />
+                    <img src={respuesta.datosUsuario.foto} alt="foto_user_res" width={"100px"} />
 
                     <figcaption>
-                        <span>{respuesta.autor}</span>
-                        <span>Respondió el: {respuesta.fecha}</span>
+                        <span>{respuesta.datosUsuario.login}</span>
+                        <span>Respondió el: {formatearFecha(respuesta.fecha)}</span>
                     </figcaption>
 
                     {/* Modificar esta parte para que valide si el usuario que esta revisando las respuestas es el

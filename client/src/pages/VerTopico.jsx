@@ -2,11 +2,15 @@ import { useLocation } from "react-router-dom"
 import Header from "../components/foro/Header";
 import Respuestas from "../components/verTopico/Respuestas";
 import QuillComp from "../components/QuillComp";
+import { formatearFecha } from "../helper/formatoFecha";
 
 const VerTopico = () => {
 
     const { state } = useLocation();
-    const topicoFake = state?.topicoFake;
+    const topicoFake = state?.topico;
+    const respuestas = state?.respuestasData;
+
+    console.log(respuestas);
 
     return (
         <div className="topico__main">
@@ -18,7 +22,7 @@ const VerTopico = () => {
                         <h1>
                             {topicoFake.titulo}
                         </h1>
-                        <span>Creado el: {topicoFake.fecha}</span>
+                        <span>Creado el: {formatearFecha(topicoFake.fecha)}</span>
                     </div>
 
                     <div className="tags_cruso">
@@ -29,8 +33,8 @@ const VerTopico = () => {
 
                 <div className="autor__mensaje">
                     <figure className="autor">
-                        <img src={topicoFake.foto} alt="foto_usuario" />
-                        <figcaption>{topicoFake.autor}</figcaption>
+                        <img src={topicoFake.DatosUsuario.foto} alt="foto_usuario" />
+                        <figcaption>{topicoFake.DatosUsuario.login}</figcaption>
                     </figure>
 
                     <div className="mensaje">
@@ -44,14 +48,14 @@ const VerTopico = () => {
 
             <div className="titulo_respuestas">
                 <h1>Respuestas</h1>
-                <span>Total: {topicoFake.respuestas.length}</span>
-                {topicoFake.respuestas.length === 0 && <h2>No hay respuestas por ahora 😓</h2>}
+                <span>Total: {respuestas.length}</span>
+                {respuestas.length === 0 && <h2>No hay respuestas por ahora 😓</h2>}
             </div>
 
             <div className="contenedor__respuestas">
                 {
-                    topicoFake.respuestas &&
-                    topicoFake.respuestas.map((respuesta, index) => (
+                    respuestas &&
+                    respuestas.map((respuesta, index) => (
                         <Respuestas key={index} respuesta={respuesta} />
                     ))
                 }

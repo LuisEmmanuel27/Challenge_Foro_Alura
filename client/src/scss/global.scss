@@ -450,10 +450,11 @@ body {
 
                             img {
                                 width: 100px;
-                                height: auto;
+                                height: 100px;
                                 border: solid 1px $DARK_BLUE;
                                 border-radius: 50%;
                                 background-color: $BLUE;
+                                object-fit: cover;
                             }
 
                             figcaption {
@@ -685,6 +686,8 @@ body {
                     background-color: $GRAY_BLUE;
                     border-radius: 50%;
                     width: 150px;
+                    height: 150px;
+                    object-fit: cover;
                 }
 
                 figcaption {

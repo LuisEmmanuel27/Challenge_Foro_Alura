@@ -1,6 +1,8 @@
 package foro.alura.luis.api.controller;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -77,6 +79,16 @@ public class RespuestaController {
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<DatosListadoRespuesta>> listandoRespuestasEspecificas(@PathVariable Long id) {
+        List<Respuesta> respuestas = respuestaRepository.findByTopicoIdAndActivoTrue(id);
+
+        List<DatosListadoRespuesta> datosRespuestas = respuestas.stream()
+                .map(respuestaMapper::toDatosListadoRespuesta).collect(Collectors.toList());
+
+        return ResponseEntity.ok(datosRespuestas);
     }
 
     private DatosResponseRespuesta construirResponseRespuesta(Respuesta respuesta) {

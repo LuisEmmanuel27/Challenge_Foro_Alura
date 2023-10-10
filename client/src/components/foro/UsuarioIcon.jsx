@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import perfil from "../../assets/perfilExample.png";
+import { GET_USER_DATA } from "../../constants/constantes";
 
 const UsuarioIcon = () => {
 
@@ -11,10 +11,12 @@ const UsuarioIcon = () => {
         localStorage.clear();
     }
 
+    const { foto } = GET_USER_DATA();
+
     return (
         <div className="usuario" onClick={activarDropDownMenu}>
             <div className="img">
-                <img src={perfil} alt="perfil" />
+                <img src={foto} alt="perfil" />
             </div>
 
             <Link to="/">
