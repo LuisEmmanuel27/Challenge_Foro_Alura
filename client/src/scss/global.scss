@@ -401,8 +401,8 @@ body {
 
                         .tags_cursos {
                             display: flex;
-                            gap: 1rem;
                             align-self: center;
+                            gap: 1rem;
 
                             span {
                                 font-size: 14px;
@@ -412,6 +412,7 @@ body {
                                 background-color: $GRAY;
                                 text-transform: uppercase;
                                 position: relative;
+                                overflow: hidden;
                             }
 
                             .tag::after,
@@ -503,6 +504,7 @@ body {
 
 .creat__topic__cont {
     height: 100vh;
+    overflow: visible;
 
     .contenedor__crear {
         min-height: 78vh;
@@ -762,6 +764,8 @@ body {
                         background-color: $GRAY_BLUE;
                         border-radius: 50%;
                         width: 150px;
+                        height: 150px;
+                        object-fit: cover;
                     }
 
                     figcaption {

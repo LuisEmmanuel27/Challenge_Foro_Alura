@@ -6,7 +6,7 @@ const FORO_API = axios.create({
 });
 
 export const crearUsuario = (usuario) => {
-    console.log('Datos del usuario a enviar:', usuario); // Agrega esta línea
+    console.log('Datos del usuario a enviar:', usuario);
 
     return FORO_API.post("/usuarios", usuario, {
         headers: {
@@ -43,4 +43,16 @@ export const listadoRespuestas = (token, id) => {
             Authorization: token,
         }
     })
+}
+
+export const agregarTopico = (token, data) => {
+    console.log(token);
+    console.log(data);
+
+    return FORO_API.post('/topicos', data, {
+        headers: {
+            Authorization: token,
+            'Content-Type': 'application/json',
+        }
+    });
 }

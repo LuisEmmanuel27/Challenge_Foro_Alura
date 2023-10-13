@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form";
 import { validarLogin } from "../../helper/validaciones";
 import { iniciarSesion } from "../../helper/api";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
