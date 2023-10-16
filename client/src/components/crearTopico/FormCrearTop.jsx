@@ -1,7 +1,7 @@
 import 'react-quill/dist/quill.snow.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReactQuill from 'react-quill';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GET_USER_DATA } from '../../constants/constantes';
 import { Toaster, toast } from 'react-hot-toast';
 import { agregarTopico } from '../../helper/api';
@@ -19,6 +19,7 @@ const FormCrearTop = () => {
     });
     const { jwtToken } = GET_USER_DATA();
     const navigate = useNavigate();
+    const params = useParams();
 
     const validarTituloMensaje = () => {
 
@@ -61,6 +62,12 @@ const FormCrearTop = () => {
             }
         }
     }
+
+    useEffect(() => {
+        if (params) {
+            console.log(params);
+        }
+    }, [])
 
     return (
         <form className='contenedor__form__nuvTopico' onSubmit={handleSubmit}>

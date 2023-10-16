@@ -7,6 +7,7 @@ import CrearTopic from "./pages/CrearTopic";
 import VerTopico from "./pages/VerTopico";
 import RutasPrivadas from "./components/RutasPrivadas";
 import Temp from "./pages/Temp";
+import EditarTopico from "./pages/EditarTopico";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/foro" element={<RutasPrivadas><Foro /></RutasPrivadas>} />
         <Route path="/foro/crear" element={<RutasPrivadas><CrearTopic /></RutasPrivadas>} />
         <Route path="/foro/topico/:auth" element={<RutasPrivadas><VerTopico /></RutasPrivadas>} />
+        <Route path="/foro/editar/:id" element={<RutasPrivadas><EditarTopico /></RutasPrivadas>} />
       </Routes>
     </Router>
   )

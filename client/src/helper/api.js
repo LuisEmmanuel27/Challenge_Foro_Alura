@@ -56,3 +56,15 @@ export const agregarTopico = (token, data) => {
         }
     });
 }
+
+export const eliminarTopico = (token, id) => {
+    console.log(token);
+    console.log(id);
+
+    return FORO_API.delete(`/topicos/${id}`, {
+        headers: {
+            Authorization: token,
+            'Content-Type': 'application/json',
+        }
+    })
+}
