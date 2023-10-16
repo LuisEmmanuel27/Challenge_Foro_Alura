@@ -68,3 +68,15 @@ export const eliminarTopico = (token, id) => {
         }
     })
 }
+
+export const obtenerTopico = (token, id) => {
+    console.log(token);
+    console.log(id);
+
+    return FORO_API.get(`/topicos/${id}`, {
+        headers: {
+            Authorization: token,
+            'Content-Type': 'application/json'
+        }
+    })
+}

@@ -25,6 +25,7 @@ const Botones = ({ idTopico }) => {
             <Link to={`/foro/editar/${idTopico}`}>
                 <button className="editar">editar</button>
             </Link>
+
             <button className="eliminar" onClick={handleDelete}>eliminar</button>
         </div>
     )

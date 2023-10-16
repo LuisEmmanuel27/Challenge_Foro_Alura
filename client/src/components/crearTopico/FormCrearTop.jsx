@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill';
 import { useEffect, useState } from 'react';
 import { GET_USER_DATA } from '../../constants/constantes';
 import { Toaster, toast } from 'react-hot-toast';
-import { agregarTopico } from '../../helper/api';
+import { agregarTopico, obtenerTopico } from '../../helper/api';
 
 const FormCrearTop = () => {
 
@@ -63,9 +63,18 @@ const FormCrearTop = () => {
         }
     }
 
+    const llamarTopico = async () => {
+        try {
+            const data = (await obtenerTopico(jwtToken, params.id)).data;
+            console.log(JSON.stringify(data));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         if (params) {
-            console.log(params);
+            llamarTopico();
         }
     }, [])
 

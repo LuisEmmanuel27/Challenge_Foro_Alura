@@ -60,13 +60,13 @@ public class TopicoController {
         return ResponseEntity.ok(topicoRepository.findByActivoTrue(paginacion).map(topicoMapper::toDatosListadoTopico));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<DatosRespuestaTopico> actualizarTopico(
+    public ResponseEntity<DatosRespuestaTopico> actualizarTopico(@PathVariable Long id,
             @RequestBody @Valid DatosActualizarTopico datosActualizarTopico,
             Authentication authentication) {
 
-        Long idTopico = datosActualizarTopico.id(); // Obtiene el id del cuerpo JSON
+        Long idTopico = id; // Obtiene el id del cuerpo JSON
         Topico topico = topicoRepository.getReferenceById(idTopico);
 
         Long idUsuarioDelTopico = topico.getUsuario().getId();
