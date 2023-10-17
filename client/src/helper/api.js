@@ -80,3 +80,16 @@ export const obtenerTopico = (token, id) => {
         }
     })
 }
+
+export const editarTopico = (token, id, data) => {
+    console.log(token);
+    console.log(id);
+    console.log(data);
+
+    return FORO_API.put(`/topicos/${id}`, data, {
+        headers: {
+            Authorization: token,
+            'Content-Type': 'application/json'
+        }
+    })
+}
