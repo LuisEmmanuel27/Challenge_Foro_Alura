@@ -20,11 +20,7 @@ const Respuestas = ({ respuesta }) => {
                     </div>
                 </figure>
 
-                <div className='mensaje'>
-                    <p>
-                        {respuesta.mensaje}
-                    </p>
-                </div>
+                <div className='mensaje' dangerouslySetInnerHTML={{ __html: respuesta.mensaje }} />
             </div>
         </div>
     )

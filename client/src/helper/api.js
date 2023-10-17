@@ -93,3 +93,15 @@ export const editarTopico = (token, id, data) => {
         }
     })
 }
+
+export const agregarRespuesta = (token, data) => {
+    console.log(token);
+    console.log(data);
+
+    return FORO_API.post('/respuestas', data, {
+        headers: {
+            Authorization: token,
+            'Content-Type': 'application/json'
+        }
+    })
+}

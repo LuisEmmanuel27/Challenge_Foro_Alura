@@ -66,8 +66,7 @@ public class TopicoController {
             @RequestBody @Valid DatosActualizarTopico datosActualizarTopico,
             Authentication authentication) {
 
-        Long idTopico = id; // Obtiene el id del cuerpo JSON
-        Topico topico = topicoRepository.getReferenceById(idTopico);
+        Topico topico = topicoRepository.getReferenceById(id);
 
         Long idUsuarioDelTopico = topico.getUsuario().getId();
         Long idUsuarioDelToken = obtenerIdUsuarioDesdeToken(authentication);

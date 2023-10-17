@@ -7,7 +7,7 @@ const Topico = ({ topico, jwtToken }) => {
 
     const NAVIGATE = useNavigate();
     const handleMostrarTopico = () => {
-        NAVIGATE(`/foro/topico/${topico.DatosUsuario.login}`, { state: { topico, respuestasData } });
+        NAVIGATE(`/foro/topico/${topico.DatosUsuario.login}/${topico.id}`, { state: { topico, respuestasData } });
     }
     const [respuestasData, setRespuestasData] = useState(null);
 

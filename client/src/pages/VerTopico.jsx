@@ -1,18 +1,35 @@
 import { useLocation } from "react-router-dom"
 import Header from "../components/foro/Header";
 import Respuestas from "../components/verTopico/Respuestas";
-import QuillComp from "../components/QuillComp";
 import { formatearFecha } from "../helper/formatoFecha";
 import { GET_USER_DATA } from "../constants/constantes";
 import Botones from "../components/verTopico/Botones";
+import AgregarRespuesta from "../components/verTopico/AgregarRespuesta";
+import { useEffect, useState } from "react";
+import { listadoRespuestas } from "../helper/api";
 
 const VerTopico = () => {
 
     const { state } = useLocation();
     const topico = state?.topico;
-    const respuestas = state?.respuestasData;
+    const [respuestas, setRespuestas] = useState(state?.respuestasData)
+    const [estadoRespuestaAdd, setEstadoRespuestaAdd] = useState(false);
 
     console.log(respuestas);
+
+    useEffect(() => {
+        const loadRespuestas = async () => {
+            try {
+                const { data } = await listadoRespuestas(GET_USER_DATA().jwtToken, topico.id);
+                setRespuestas(data);
+                setEstadoRespuestaAdd(false);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        loadRespuestas();
+    }, [estadoRespuestaAdd])
 
     return (
         <div className="topico__main">
@@ -39,8 +56,7 @@ const VerTopico = () => {
                         <figcaption>{topico.DatosUsuario.login}</figcaption>
                     </figure>
 
-                    <div className="mensaje" dangerouslySetInnerHTML={{ __html: topico.mensaje }}>
-                    </div>
+                    <div className="mensaje" dangerouslySetInnerHTML={{ __html: topico.mensaje }} />
                 </div>
 
                 {
@@ -65,15 +81,7 @@ const VerTopico = () => {
                 }
             </div>
 
-            <div className="form__respuesta__nueva">
-                <h1>¿Quieres agregar una respuesta? ¡Adelante!</h1>
-
-                <QuillComp />
-
-                <div className="cont_btn">
-                    <button className="btn_principal">enviar</button>
-                </div>
-            </div>
+            <AgregarRespuesta idTopico={topico.id} setEstadoRespuestaAdd={setEstadoRespuestaAdd} />
         </div>
     )
 }
