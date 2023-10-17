@@ -255,7 +255,7 @@ body {
 
         .drop_down_menu {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-1000px);
             position: absolute;
             max-width: 200px;
             height: auto;
@@ -264,8 +264,7 @@ body {
             bottom: -90px;
             background-color: $GRAY_BLUE;
             border-radius: 20px;
-            transition: all 0.2s linear;
-            z-index: -100;
+            transition: opacity 0.1s linear;
 
             &.active {
                 opacity: 1;
