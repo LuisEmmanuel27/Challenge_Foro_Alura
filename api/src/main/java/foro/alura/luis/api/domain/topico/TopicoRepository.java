@@ -10,4 +10,8 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
 
     Page<Topico> findByTagsAndCursoAndActivoTrue(Tags tags, Cursos curso, Pageable pageable);
 
+    Page<Topico> findByTagsAndActivoTrue(Tags tags, Pageable pageable);
+
+    Page<Topico> findByCursoAndActivoTrue(Cursos curso, Pageable pageable);
+
 }

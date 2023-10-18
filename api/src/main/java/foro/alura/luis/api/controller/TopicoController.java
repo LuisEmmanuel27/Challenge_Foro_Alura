@@ -1,7 +1,6 @@
 package foro.alura.luis.api.controller;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.security.core.Authentication;
 
+import foro.alura.luis.api.domain.topico.Cursos;
 import foro.alura.luis.api.domain.topico.DatosActualizarTopico;
 import foro.alura.luis.api.domain.topico.DatosBuscarTopico;
 import foro.alura.luis.api.domain.topico.DatosListadoTopico;
 import foro.alura.luis.api.domain.topico.DatosRegistroTopico;
 import foro.alura.luis.api.domain.topico.DatosRespuestaTopico;
+import foro.alura.luis.api.domain.topico.Tags;
 import foro.alura.luis.api.domain.topico.Topico;
 import foro.alura.luis.api.domain.topico.TopicoMapper;
 import foro.alura.luis.api.domain.topico.TopicoRepository;
@@ -121,14 +122,30 @@ public class TopicoController {
         return ResponseEntity.ok(datosRespuestaTopico);
     }
 
-    @GetMapping("/buscar")
+    @PostMapping("/buscar")
     public ResponseEntity<Page<DatosListadoTopico>> buscarPorTagsYCurso(
             @RequestBody @Valid DatosBuscarTopico datosBuscarTopico, Pageable paginacion) {
-        return ResponseEntity.ok(
-                topicoRepository
-                        .findByTagsAndCursoAndActivoTrue(datosBuscarTopico.tags(), datosBuscarTopico.curso(),
-                                paginacion)
-                        .map(topicoMapper::toDatosListadoTopico));
+        Tags tags = datosBuscarTopico.tags();
+        Cursos curso = datosBuscarTopico.curso();
+
+        Page<Topico> resultados;
+
+        if (tags != null && curso != null) {
+            // Realizar búsqueda por ambos parámetros.
+            resultados = topicoRepository.findByTagsAndCursoAndActivoTrue(tags, curso, paginacion);
+        } else if (tags != null) {
+            // Realizar búsqueda por tags.
+            resultados = topicoRepository.findByTagsAndActivoTrue(tags, paginacion);
+        } else if (curso != null) {
+            // Realizar búsqueda por curso.
+            resultados = topicoRepository.findByCursoAndActivoTrue(curso, paginacion);
+        } else {
+            // No se especificaron parámetros válidos, podrías devolver un error apropiado o
+            // una respuesta por defecto.
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+        return ResponseEntity.ok(resultados.map(topicoMapper::toDatosListadoTopico));
     }
 
     private DatosRespuestaTopico construirDatosRespuestaTopico(Topico topico) {
