@@ -1,6 +1,7 @@
 package foro.alura.luis.api.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.security.core.Authentication;
 
 import foro.alura.luis.api.domain.topico.DatosActualizarTopico;
+import foro.alura.luis.api.domain.topico.DatosBuscarTopico;
 import foro.alura.luis.api.domain.topico.DatosListadoTopico;
 import foro.alura.luis.api.domain.topico.DatosRegistroTopico;
 import foro.alura.luis.api.domain.topico.DatosRespuestaTopico;
@@ -117,6 +119,16 @@ public class TopicoController {
                 topico.getCurso());
 
         return ResponseEntity.ok(datosRespuestaTopico);
+    }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<Page<DatosListadoTopico>> buscarPorTagsYCurso(
+            @RequestBody @Valid DatosBuscarTopico datosBuscarTopico, Pageable paginacion) {
+        return ResponseEntity.ok(
+                topicoRepository
+                        .findByTagsAndCursoAndActivoTrue(datosBuscarTopico.tags(), datosBuscarTopico.curso(),
+                                paginacion)
+                        .map(topicoMapper::toDatosListadoTopico));
     }
 
     private DatosRespuestaTopico construirDatosRespuestaTopico(Topico topico) {
