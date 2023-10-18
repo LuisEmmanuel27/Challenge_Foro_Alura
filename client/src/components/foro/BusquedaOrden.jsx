@@ -1,13 +1,25 @@
 import { Link } from 'react-router-dom';
 import SelectBusqueda from './SelectBusqueda';
 
-const BusquedaOrden = () => {
+const BusquedaOrden = ({ metodo, setMetodo, parametro, setParametro, setBusquedaRealizada }) => {
+
+    const handleBuscar = (e) => {
+        e.preventDefault();
+        setBusquedaRealizada(true);
+    }
 
     return (
         <div className='contenedor__orden__busqueda'>
             <form>
-                <SelectBusqueda />
-                <button className='btn_principal'>búscar</button>
+                <SelectBusqueda
+                    metodo={metodo}
+                    setMetodo={setMetodo}
+                    parametro={parametro}
+                    setParametro={setParametro}
+                    setBusquedaRealizada={setBusquedaRealizada}
+                />
+
+                <button className='btn_principal' onClick={handleBuscar}>búscar</button>
             </form>
 
             <div className='crear'>

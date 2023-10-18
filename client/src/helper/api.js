@@ -105,3 +105,14 @@ export const agregarRespuesta = (token, data) => {
         }
     })
 }
+
+export const buscarTopico = (token, data) => {
+    console.log(token);
+    console.log(data);
+
+    return FORO_API.post('/topicos/buscar', data, {
+        headers: {
+            Authorization: token
+        }
+    })
+}

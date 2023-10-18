@@ -140,8 +140,7 @@ public class TopicoController {
             // Realizar búsqueda por curso.
             resultados = topicoRepository.findByCursoAndActivoTrue(curso, paginacion);
         } else {
-            // No se especificaron parámetros válidos, podrías devolver un error apropiado o
-            // una respuesta por defecto.
+            // No se especificaron parámetros válidos
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
